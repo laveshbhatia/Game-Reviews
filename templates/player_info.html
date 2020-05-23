@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <title>Player Overview</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Call Of Duty Reviews</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarToggle">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="home"> Home</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="teams"> Teams</a>
+                    </li>
+                    {% if session['logged in']==True %}
+                    <li class="nav-item">
+                        <a class="nav-link " href="logout"> Logout</a>
+                    </li>
+                    {% else%}
+                    <li class="nav-item">
+                        <a class="nav-link " href="login"> Login/Register</a>
+                    </li>
+                    {%endif%}
+                    <li class="nav-item">
+                        <a class="nav-link" href="aboutus"> GuestBook</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="leaderboard"> Leaderboard</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="player"> Player</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="py-2">
+                <center>Player Information</center>
+            </h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <p class="px-5">In this page, you just have to type the name of the player who currently is part of the call
+                of duty league team and it will automatically give you all the important information of that player.
+                This information includes The Real name of the player, it tells you the Age of the player, which country
+                is the player originally from, which team are they currently playing in and it also provides you
+                information about their role in the team they are currently playing in. <br> Incase you search for a
+                player and there are no results found, please make sure the name you have entered is correct, if you
+                still face the issue please raise a complaint in the guestbook and our team will look into it. <p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 offset-4">
+            <form action="{{ url_for('player') }}" method="POST">
+                <label for="playerteam">Enter Player Name</label>
+                <input type="text" name="playerteam" value="{{input}}">
+            </form>
+            <p class="text-danger">{{error}}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 offset-md-4 p-3 ">
+            <img class=" ml-5 " style="background-color:whitesmoke" src="{{image}}" width="300">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 offset-md-4 ">
+            <table class="table table-bordered table-hover ">
+                <tr class="table-primary">
+                    <td>Real Name</td>
+                    <td>{{name}}</td>
+                </tr>
+                <tr class="table-success">
+                    <td>Age</td>
+                    <td>{{age}}</td>
+                </tr>
+                <tr class="table-danger">
+                    <td>Country</td>
+                    <td>{{country}}</td>
+                </tr>
+                <tr class="table-info">
+                    <td>Current Team</td>
+                    <td>{{team}}</td>
+                </tr>
+                <tr class="table-warning">
+                    <td>Main Role</td>
+                    <td>{{life}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</body>
+
+</html>

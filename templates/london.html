@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <title>London Royal Ravens</title>
+</head>
+
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Call Of Duty Reviews</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarToggle">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item ">
+                    <a class="nav-link" href="home"> Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="teams"> Teams</a>
+                </li>
+                {% if session['logged in']==True %}
+                <li class="nav-item">
+                    <a class="nav-link " href="logout"> Logout</a>
+                </li>
+                {% else%}
+                <li class="nav-item">
+                    <a class="nav-link " href="login"> Login/Register</a>
+                </li>
+                {%endif%}
+                <li class="nav-item">
+                    <a class="nav-link" href="aboutus"> GuestBook</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="leaderboard"> Leaderboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="player"> Player</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 mt-4">
+                <h1 class="text-center">London Royal Ravens</h1>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-lg-3 mt-4">
+                <img src="/static/images/londonrr.png" alt="" height="160px" />
+            </div>
+            <div class="col-lg-9 mt-4">
+                <p>
+                    The franchise was officially announced on September 13, 2019. Over the next few days, the team
+                    announced their initial
+                    coaching staff of Dominate, ShAnE, and Joee. On September 17, they announced not only their first
+                    player signing but
+                    also the first player signing in the history of the franchise league, wuskin. wuskin's brother,
+                    Skrapz, and Dylan joined
+                    the team on September 20. Irish SMG Jurd joined as the first non-Britsh player on September 28. A
+                    day later, the
+                    organization became the second franchise team to complete it's starting roster, with Rated joining
+                    as their 5th. On
+                    October 15, the team became the first Call of Duty League team to reveal their official name and
+                    branding, the London
+                    Royal Ravens. Seany joined as substitute on November 3 followed by MadCat on November 7.
+                </p>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-lg-9">
+                <p>
+                    London Royal Ravens, the previously-leaked team name of ReKTGlobal’s London Call of Duty League
+                    franchise slot, has
+                    finally been confirmed.
+
+                    ReKTGlobal has revealed branding for the London Royal Ravens who will be competing in the Call of
+                    Duty League starting
+                    in 2020.
+
+                    The team name, London Royal Ravens, stems from the legend of the Tower of London ravens. It is said
+                    that the kingdom and
+                    the Tower of London will fall if the six resident ravens ever leave the fortress.
+
+                    There are seven ravens at the Tower today – the required six and one to spare. Charles II is thought
+                    to have been the
+                    first to insist that the ravens of the Tower be protected after he was warned that the crown and the
+                    Tower itself would
+                    fall if they left.
+
+                </p>
+            </div>
+            <div class="col-lg-3 mt-3">
+                <img src="/static/images/royalraven.jpg" alt="" height="125px">
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-lg-12">
+                <h2 class="font-weight-bold text-center">Meet the Team</h2>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-lg-4">
+                <img src="/static/images/wuskin.png" height="350px" alt="">
+            </div>
+
+            <div class="col-lg-4">
+                <img src="/static/images/Skrapz.png" height="350px" alt="">
+
+            </div>
+            <div class="col-lg-4">
+                <img src="/static/images/Dylan.png" height="350px" alt="">
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-lg-6 ">
+                <img src="/static/images/Jurd.png" height="350px" alt="">
+            </div>
+
+            <div class="col-lg-6">
+                <img src="/static/images/Rated.png" height="350px" alt="">
+
+            </div>
+
+        </div>
+        <br><br>
+        {% block content %}
+        {% if session['logged in']==True %}
+        <span>ADD COMMENTS</span>
+        <hr>
+        <form action="{{ url_for('londoncomments') }}" method="POST" id="commentuser">
+            <div class="row">
+                <div class="col-md-2">
+                    <label class="sr-only" for="name">Name</label>
+                </div>
+                <div class="col-md-4 col-md-offset-6">
+                    <input type="text" name="name" id="name" class="form-control sr-only"
+                        value="{{session['username']}}" required>
+                </div>
+            </div>
+
+            <br>
+            <div class="row">
+                <div class="col-md-2">
+                    <label for="">Comment</label>
+                </div>
+                <div class="col-md-8 col-md-offset-2 col-sm-12">
+                    <div class="comment-wrapper">
+                        <div class="panel-body">
+                            <textarea class="form-control" placeholder="Write a comment..." rows="3" name="comment"
+                                required></textarea>
+                            <br>
+                            <button type="submit" class="btn btn-info pull-right">Post</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <br>
+        <hr>
+        <span>COMMENTS</span> <br><br><br>
+        {% for postcomments in entries %}
+        <div class="row">
+
+            <div class="col-lg-1 mt-2 randomColor rounded-circle">
+            </div>
+            <div class=" col-lg-8 col-lg-offset-3">
+                <label class="text-info">{{ postcomments[0]}}</label>
+                <br>
+                <textarea class="form-control bg-white" rows="2" disabled>{{ postcomments[1]}}</textarea>
+
+            </div>
+        </div>
+        <br>
+        {% endfor %}
+        {% else %}
+        <div class="row">
+            <div class="col-lg-12">
+                <p>You are not logged in, in order to view comments please login in</p>
+            </div>
+        </div>
+        {% endif %}
+        {% endblock%}
+    </div>
+
+    <script>
+        var element = document.getElementsByClassName("randomColor");
+
+        for (var x = 0; x < element.length; x++) {
+            var letters = "0123456789ABCDEF";
+            var coloring = '#';
+            for (var i = 0; i < 6; i++)
+                coloring += letters[(Math.floor(Math.random() * 16))];
+            element[x].style.background = coloring;
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

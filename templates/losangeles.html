@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <title>Los Angeles Guerrillas</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Call Of Duty Reviews</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarToggle">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="home"> Home</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="teams"> Teams</a>
+                    </li>
+                    {% if session['logged in']==True %}
+                    <li class="nav-item">
+                        <a class="nav-link " href="logout"> Logout</a>
+                    </li>
+                    {% else%}
+                    <li class="nav-item">
+                        <a class="nav-link " href="login"> Login/Register</a>
+                    </li>
+                    {%endif%}
+                    <li class="nav-item">
+                        <a class="nav-link" href="aboutus"> GuestBook</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="leaderboard"> Leaderboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="player"> Player</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 mt-4">
+                <h1 class="text-center">Los Angeles Guerrillas</h1>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-lg-3 mt-4">
+                <img src="/static/images/lag1.jpg" alt="" height="120px" />
+            </div>
+            <div class="col-lg-9 mt-4">
+                <p>
+                    The Los Angeles Guerrillas are the newest member of the KSE Esports family, joining the Los Angeles
+                    Gladiators in
+                    Overwatch League and countless traditional sports teams.
+
+                    In Los Angeles, the rivalries are fierce and the Guerrillas are ready to fight their way to the top
+                    of the League,
+                    dominating one team after another on their path towards victory.
+                    With a legendary roster as old as Call of Duty esports itself, Guerrillas may be new, but the talent
+                    isn't.
+
+                    The team’s vibrant purple and black motif brings together fans from the Los Angeles Gladiators and
+                    sets an aggressive
+                    tone for competition.
+
+                    Join us as we take over LA.
+                </p>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-lg-12">
+                <h2 class="font-weight-bold text-center">Meet the Team</h2>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-lg-4">
+                <img src="/static/images/Lacefield.png" height="350px" alt="">
+            </div>
+
+            <div class="col-lg-4">
+                <img src="/static/images/ACHES.png" height="350px" alt="">
+
+            </div>
+            <div class="col-lg-4">
+                <img src="/static/images/AquA.png" height="350px" alt="">
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-lg-6 ">
+                <img src="/static/images/Decemate.png" height="350px" alt="">
+            </div>
+
+            <div class="col-lg-6">
+                <img src="/static/images/Saints.png" height="350px" alt="">
+
+            </div>
+
+        </div>
+        <br><br>
+        {% block content %}
+        {% if session['logged in']==True %}
+        <span>ADD COMMENTS</span>
+        <hr>
+        <form action="{{ url_for('lacomments') }}" method="POST" id="commentuser">
+            <div class="row">
+                <div class="col-md-2">
+                    <label class="sr-only" for="name">Name</label>
+                </div>
+                <div class="col-md-4 col-md-offset-6">
+                    <input type="text" name="name" id="name" class="form-control sr-only"
+                        value="{{session['username']}}" required>
+                </div>
+            </div>
+
+            <br>
+            <div class="row">
+                <div class="col-md-2">
+                    <label for="">Comment</label>
+                </div>
+                <div class="col-md-8 col-md-offset-2 col-sm-12">
+                    <div class="comment-wrapper">
+                        <div class="panel-body">
+                            <textarea class="form-control" placeholder="Write a comment..." rows="3" name="comment"
+                                required></textarea>
+                            <br>
+                            <button type="submit" class="btn btn-info pull-right">Post</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <br>
+        <hr>
+        <span>COMMENTS</span> <br><br><br>
+        {% for postcomments in entries %}
+        <div class="row">
+
+            <div class="col-lg-1 mt-2 randomColor rounded-circle">
+            </div>
+            <div class=" col-lg-8 col-lg-offset-3">
+                <label class="text-info">{{ postcomments[0]}}</label>
+                <br>
+                <textarea class="form-control bg-white" rows="2" disabled>{{ postcomments[1]}}</textarea>
+
+            </div>
+        </div>
+        <br>
+        {% endfor %}
+        {% else %}
+        <div class="row">
+            <div class="col-lg-12">
+                <p>You are not logged in, in order to view comments please login in</p>
+            </div>
+        </div>
+        {% endif %}
+        {% endblock%}
+    </div>
+
+    <script>
+        var element = document.getElementsByClassName("randomColor");
+
+        for (var x = 0; x < element.length; x++) {
+            var letters = "0123456789ABCDEF";
+            var coloring = '#';
+
+            for (var i = 0; i < 6; i++)
+                coloring += letters[(Math.floor(Math.random() * 16))];
+            element[x].style.background = coloring;
+
+        }
+
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

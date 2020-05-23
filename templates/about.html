@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <title>GUESTBOOK</title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Call Of Duty Reviews</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarToggle">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="home"> Home</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="teams"> Teams</a>
+                    </li>
+                    {% if session['logged in']==True %}
+                    <li class="nav-item">
+                        <a class="nav-link " href="logout"> Logout</a>
+                    </li>
+                    {% else%}
+                    <li class="nav-item">
+                        <a class="nav-link " href="login"> Login/Register</a>
+                    </li>
+                    {%endif%}
+                    <li class="nav-item active">
+                        <a class="nav-link " href="aboutus"> GuestBook</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="leaderboard"> Leaderboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="player"> Player</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+
+        {% block content %}
+        {% if session['logged in']==True %}
+        <div class="row">
+            <div class="col-lg-12">
+                <p>You are logged in, in order to view guestbook please log out</p>
+            </div>
+        </div>
+        {% else %}
+        <div class="row">
+            <div class="col-lg-11">
+                <h1 class="text-center mt-3 ml-5"> Guestbook</h1>
+            </div>
+            <div class="col-md-1 card-body bg-warning mt-3">
+                <span>Today's</span>
+                <span>Weather</span>
+                <span>
+                    <center>
+                        {{error}}
+                        {{weather}}
+                    </center>
+                </span>
+            </div>
+        </div>
+        <span>ADD COMMENTS</span>
+        <hr>
+        <form action="{{ url_for('guestbookcomments') }}" method="POST" id="commentuser">
+            <div class="row">
+                <div class="col-md-2">
+                    <label for="name">Name</label>
+                </div>
+                <div class="col-md-4 col-md-offset-6">
+                    <input type="text" name="name" id="name" class="form-control" placeholder="Enter Name....">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-2">
+                    <label for="">Comment</label>
+                </div>
+                <div class="col-md-8 col-md-offset-2 col-sm-12">
+                    <div class="comment-wrapper">
+                        <div class="panel-body">
+                            <textarea class="form-control" placeholder="Write a comment..." rows="3"
+                                name="comment"></textarea>
+                            <br>
+                            <button type="submit" class="btn btn-info pull-right">Post</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <br>
+        <hr>
+
+        <span>COMMENTS</span><br><br><br>
+        {% for postcomments in entries %}
+        <div class="row">
+
+            <div class="col-lg-1 mt-2 randomColor rounded-circle">
+            </div>
+            <div class=" col-lg-8 col-lg-offset-3">
+                <label class="text-info">{{ postcomments[0]}}</label>
+                <br>
+                <textarea class="form-control bg-white" rows="2" disabled>{{ postcomments[1]}}</textarea>
+
+            </div>
+        </div>
+        <br><br>
+        {% endfor %}
+        <br>
+        {% endif %}
+        {% endblock %}
+    </div>
+
+
+
+    <script>
+        var element = document.getElementsByClassName("randomColor");
+
+        for (var x = 0; x < element.length; x++) {
+            var letters = "0123456789ABCDEF";
+            var coloring = '#';
+
+            for (var i = 0; i < 6; i++)
+                coloring += letters[(Math.floor(Math.random() * 16))];
+            element[x].style.background = coloring;
+
+        }
+
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <title>HOMEPAGE</title>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Call Of Duty Reviews</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarToggle">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active ">
+            <a class="nav-link" href="home"> Home</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="teams"> Teams</a>
+          </li>
+          {% if session['logged in']==True %}
+          <li class="nav-item">
+            <a class="nav-link " href="logout"> Logout</a>
+          </li>
+          {% else%}
+          <li class="nav-item">
+            <a class="nav-link " href="login"> Login/Register</a>
+          </li>
+          {%endif%}
+          <li class="nav-item">
+            <a class="nav-link" href="aboutus"> GuestBook</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="leaderboard"> Leaderboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="player"> Player</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-11 mt-3 text-center ">
+        <img src="/static/images/logo.png" alt="">
+      </div>
+
+    </div>
+    <br />
+    <div class="row">
+      <div class="col-lg-12">
+        <p class="index-introduction font-weight-bold">
+          Welcome to Call of Duty League Reviews site. On this site, you can
+          get all the information about the different teams that currently
+          exist in the league. It all provides the information about the
+          players each team has currently signed and in which place they are
+          going to have their stadium. You can view all this information and
+          post comments about what you feel about the team.
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-10">
+        <h2 class="index-head text-center">What is Activision Blizzard?</h2>
+        <br />
+      </div>
+      <div class="col-lg-2">
+        <span>Stock - </span>
+        <kbd>
+          {{error}}
+          {{stock}}$
+
+        </kbd>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-3">
+        <img src="/static/images/activision logo.jpg" alt="" />
+      </div>
+      <div class="col-lg-9">
+        <p class="activision-description">
+          Activision Blizzard, Inc. is an American video game holding company
+          based in Santa Monica, California. The company was founded in July
+          2008 through the merger of Activision, Inc. (the publicly traded
+          parent company of Activision Publishing) and Vivendi Games. The
+          company is traded on the NASDAQ stock exchange under the ticker
+          symbol ATVI, and since 2015 has been one of the stocks that make up
+          the S&P 500. Activision Blizzard currently includes five business
+          units: Activision Publishing, Blizzard Entertainment, King, Major
+          League Gaming,and Activision Blizzard Studios.
+        </p>
+        <br /><br />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <h2 class="index-head text-center">What is Call Of Duty League?</h2>
+        <br />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-9">
+        <p class="cdl-description">
+          {{error}}
+          {{content}}
+        </p>
+      </div>
+      <div class="col-lg-3 ">
+        <img src="/static/images/call of duty league.jpg" alt="" />
+      </div>
+    </div>
+    <br /><br />
+    <h2 class="text-center index-head">Meet the Team</h2>
+    <br><br>
+    <div class="row">
+      <div class="col-lg-3 col-sm-6 mb-sm-4 ">
+        <a href="dallas"> <img src="/static/images/dallas.PNG" alt="" height="300px"></a>
+      </div>
+      <div class="col-lg-3 col-sm-6 mb-sm-4 ">
+        <a href="faze"> <img src="/static/images/faze.PNG" alt="" height="300px"></a>
+      </div>
+      <div class="col-lg-3 col-sm-6  mb-sm-4 ">
+        <a href="florida"> <img src="/static/images/florida.PNG" alt="" height="300px"></a>
+      </div>
+      <div class="col-lg-3 col-sm-6  mb-sm-4">
+        <a href="chicago"> <img src="/static/images/huntsmen.PNG" alt="" height="300px"></a>
+      </div>
+    </div>
+    <br /><br />
+    <div class="row">
+      <div class="col-lg-3 col-sm-6 mb-sm-4">
+        <a href="london"> <img src="/static/images/london.PNG" alt="" height="300px"></a>
+      </div>
+      <div class="col-lg-3 col-sm-6  mb-sm-4">
+        <a href="losangeles"> <img src="/static/images/los angeles.PNG" alt="" height="300px"></a>
+      </div>
+      <div class="col-lg-3 col-sm-6 mb-sm-4">
+        <a href="minnesota"> <img src="/static/images/minnesota.PNG" alt="" height="300px"></a>
+      </div>
+      <div class="col-lg-3 col-sm-6 mb-sm-4">
+        <a href="newyork"> <img src="/static/images/new york.PNG" alt="" height="300px"></a>
+      </div>
+    </div>
+    <br /><br />
+    <div class="row">
+      <div class="col-lg-3 col-sm-6 mb-sm-4">
+        <a href="optic"> <img src="/static/images/optic.PNG" alt="" height="300px"></a>
+      </div>
+      <div class="col-lg-3 col-sm-6 mb-sm-4">
+        <a href="paris"> <img src="/static/images/paris.PNG" alt="" height="300px"></a>
+      </div>
+      <div class="col-lg-3 col-sm-6 mb-sm-4">
+        <a href="seattle"><img src="/static/images/seattle.PNG" alt="" height="300px"></a>
+      </div>
+      <div class="col-lg-3 col-sm-6 mb-sm-4">
+        <a href="toronto"> <img src="/static/images/toronto.PNG" alt="" height="300px"> </a>
+      </div>
+    </div>
+    <br /><br />
+  </div>
+
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

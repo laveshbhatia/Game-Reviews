@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <title>LEADERBOARD</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Call Of Duty Reviews</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarToggle">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="home"> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="teams"> Teams</a>
+                    </li>
+                    {% if session['logged in']==True %}
+                    <li class="nav-item">
+                        <a class="nav-link " href="logout"> Logout</a>
+                    </li>
+                    {% else%}
+                    <li class="nav-item">
+                        <a class="nav-link " href="login"> Login/Register</a>
+                    </li>
+                    {%endif%}
+                    <li class="nav-item">
+                        <a class="nav-link" href="aboutus"> GuestBook</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link " href="leaderboard"> Leaderboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="player"> Player</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <p class="text-danger">{{error}}</p>
+    <div class="container ">
+        <table class="table table-bordered table-striped table-hover">
+            <tr>
+                <th>Rank</th>
+                <th>Team</th>
+                <th>Points</th>
+                <th>Events Played</th>
+                <th>Matches Won</th>
+                <th>Matches Lost</th>
+            </tr>
+            <tr class="info">
+                {% for leaderboard in entries %}
+            <tr class="table-info">
+                <td>{{leaderboard[0]}}</td>
+                <td>{{leaderboard[1]}}</td>
+                <td>{{leaderboard[2]}}</td>
+                <td>{{leaderboard[3]}}</td>
+                <td>{{leaderboard[4]}}</td>
+                <td>{{leaderboard[5]}}</td>
+            </tr>
+            {% endfor %}
+            </tr>
+
+        </table>
+
+
+</body>
+
+</html>

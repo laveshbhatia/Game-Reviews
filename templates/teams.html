@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+
+    <title>Teams</title>
+</head>
+
+<body>
+
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Call Of Duty Reviews</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarToggle">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="home"> Home</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="teams"> Teams</a>
+                    </li>
+                    {% if session['logged in']==True %}
+                    <li class="nav-item">
+                        <a class="nav-link " href="logout"> Logout</a>
+                    </li>
+                    {% else%}
+                    <li class="nav-item">
+                        <a class="nav-link " href="login"> Login/Register</a>
+                    </li>
+                    {%endif%}
+                    <li class="nav-item">
+                        <a class="nav-link" href="aboutus"> GuestBook</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="leaderboard"> Leaderboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="player"> Player</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <p class="index-introduction font-weight-bold">
+                    <center>
+                        <h2>News of the Day</h2>
+                    </center>
+                    <div class="card-body bg-light">
+                        <center>
+                            <span>{{error}} {{news}}</span>
+                        </center>
+                    </div>
+                </p>
+            </div>
+        </div>
+        <h2 class="text-center team-header">Meet the Teams</h2>
+        <br>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+
+                <input class="form-control " type="text" name="search" value="" autocomplete="off" id="myinput"
+                    onkeyup="searchFunction()" placeholder="Search">
+            </div>
+        </div>
+        <br>
+        <ul class="list-unstyled" id="wrapper">
+            <div class="row">
+                <div class="col-lg-3 col-sm-6 mb-sm-4 ">
+                    <li>
+                        <textarea class="sr-only">Dallas Empire</textarea>
+                        <a href="dallas"> <img src="/static/images/dallas.PNG" alt="" height="300px"></a>
+                    </li>
+                </div>
+                <div class="col-lg-3 col-sm-6 mb-sm-4 ">
+                    <li>
+                        <textarea class="sr-only">Atlanta Faze</textarea>
+                        <a href="faze"> <img src="/static/images/faze.PNG" alt="" height="300px"></a>
+                    </li>
+                </div>
+                <div class="col-lg-3 col-sm-6  mb-sm-4 ">
+                    <li>
+                        <textarea class="sr-only">Florida Mutineers</textarea>
+                        <a href="florida"> <img src="/static/images/florida.PNG" alt="" height="300px"></a>
+                    </li>
+                </div>
+                <div class="col-lg-3 col-sm-6  mb-sm-4">
+                    <li>
+                        <textarea class="sr-only">Chicago Huntsmen</textarea>
+                        <a href="chicago"> <img src="/static/images/huntsmen.PNG" alt="" height="300px"></a>
+                    </li>
+                </div>
+            </div>
+            <br /><br />
+            <div class="row">
+                <div class="col-lg-3 col-sm-6 mb-sm-4">
+                    <li>
+                        <textarea class="sr-only">London Royal Ravens</textarea>
+                        <a href="london"> <img src="/static/images/london.PNG" alt="" height="300px"></a>
+                    </li>
+                </div>
+                <div class="col-lg-3 col-sm-6  mb-sm-4">
+                    <li>
+                        <textarea class="sr-only">Los Angeles Guerrillas</textarea>
+                        <a href="losangeles"> <img src="/static/images/los angeles.PNG" alt="" height="300px"></a>
+                    </li>
+                </div>
+                <div class="col-lg-3 col-sm-6 mb-sm-4">
+                    <li>
+                        <textarea class="sr-only">Minnesota RØKKR</textarea>
+                        <a href="minnesota"> <img src="/static/images/minnesota.PNG" alt="" height="300px"></a>
+                    </li>
+                </div>
+                <div class="col-lg-3 col-sm-6 mb-sm-4">
+                    <li>
+                        <textarea class="sr-only">New York Subliners</textarea>
+                        <a href="newyork"> <img src="/static/images/new york.PNG" alt="" height="300px"></a>
+                    </li>
+                </div>
+            </div>
+            <br /><br />
+            <div class="row">
+                <div class="col-lg-3 col-sm-6 mb-sm-4">
+                    <li>
+                        <textarea class="sr-only">OpTic Gaming Los Angeles</textarea>
+                        <a href="optic"> <img src="/static/images/optic.PNG" alt="" height="300px"></a>
+                    </li>
+                </div>
+                <div class="col-lg-3 col-sm-6 mb-sm-4">
+                    <li>
+                        <textarea class="sr-only">Paris Legion</textarea>
+                        <a href="paris"> <img src="/static/images/paris.PNG" alt="" height="300px"></a>
+                    </li>
+                </div>
+                <div class="col-lg-3 col-sm-6 mb-sm-4">
+                    <li>
+                        <textarea class="sr-only">Seattle Surge</textarea>
+                        <a href="seattle"><img src="/static/images/seattle.PNG" alt="" height="300px"></a>
+                    </li>
+                </div>
+                <div class="col-lg-3 col-sm-6 mb-sm-4">
+                    <li>
+                        <textarea class="sr-only">Toronto Ultra</textarea>
+                        <a href="toronto"> <img src="/static/images/toronto.PNG" alt="" height="300px"> </a> </li>
+                </div>
+            </div>
+        </ul>
+        <br /><br />
+    </div>
+
+    <script>
+        function searchFunction() {
+            var input, filter, ul, li, a, i;
+            input = document.getElementById('myinput');
+            filter = input.value.toUpperCase();
+            ul = document.getElementById('wrapper');
+            li = ul.getElementsByTagName('li');
+
+            for (i = 0; i < li.length; i++) {
+                a = li[i].getElementsByClassName('sr-only')[0];
+                if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                }
+
+                else {
+                    li[i].style.display = 'none';
+                }
+            }
+        }
+
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
